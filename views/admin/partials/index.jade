@@ -1,0 +1,67 @@
+extends ../layout
+block style
+  style.
+    .title-font{
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      line-height: 1;
+      color: #767777;
+      font-weight: 500;
+    }
+    .title {
+      font-size: 60px;
+      padding-top: 100px;
+    }
+    .subtitle{
+      font-size: 21px;
+      padding-top: 24px;
+    }
+    .text-credit{
+      font-size: 12px;
+      margin: 23px;
+    }
+    .wrapper-landing{
+      margin:50px auto;
+    }
+    .menu-landing{
+      float:left;
+      margin:10px;
+      background-color:white;
+    }
+    .menu-landing i {
+      font-size: 180px;
+      color: #848484;
+      padding: 50px 50px 0px 50px;
+    }
+    .menu-landing-title{
+      font-size: 28px;
+      color: #787676;
+      text-align: center;
+      padding-bottom: 40px;
+      font-weight: bold;
+    }
+    .footer{
+      margin-top:100px;
+      position:fixed;
+      bottom:0px;
+      width:100%;
+      background-color:#f2f2f2;
+      border-top:1px solid #cbcbcb;
+    }
+block content
+  .home-page.mdl-layout__content
+    a(name='top')
+    .mdl-grid
+      .mdl-cell.mdl-cell--12-col 
+        .mdl-typography--text-center
+          .title-font.title admin letplay management system
+          .title-font.subtitle Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      br
+      .wrapper-landing
+        a.menu-landing.mdl-shadow--2dp(href='#{admin_url}/user')
+          i.material-icons(role='presentation') people
+          .menu-landing-title USER
+        a.menu-landing.mdl-shadow--2dp(href='#{admin_url}/games')
+          i.material-icons(role='presentation') games
+          .menu-landing-title GAMES
+      .clear
+block script

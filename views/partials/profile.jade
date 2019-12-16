@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .profile-page.mdl-layout__content
+    a(name='top')
+    
+    .mdl-grid
+      - var img_cover = profile.cover ? 'background: url("'+profile.cover+'") left top no-repeat;' : ''
+      .mdl-cell.mdl-cell--12-col.profile-header(style='#{img_cover}')
+        .profile-gradient
+        .profile-avatar
+          - var img_avatar = profile.picture || '/images/default-avatar.png'
+          img(src='#{img_avatar}')
+        .logo-font.profile-username #{profile.username}
+        .logo-font.profile-realname #{profile.name}
+        .logo-font.profile-bio #{profile.bio}
+        if user
+          if profile._id.toString() === user._id.toString() 
+            .edit-profile-button
+              a.mdl-button.mdl-js-button.mdl-button--raised(href='/user/#{profile.username}/edit',style='background: rgba(158, 158, 158, 0.8);') EDIT PROFILE
+      section.last-activity.mdl-cell.mdl-cell--8-col.mdl-cell--6-col-tablet Last Activity 
+        
+      section.friends.mdl-cell.mdl-cell--4-col.mdl-cell--2-col-tablet Friends
+        .logo-font

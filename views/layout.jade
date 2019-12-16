@@ -1,0 +1,185 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Let's PLAY
+    meta(name='viewport', content='width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1')
+    link(rel='shortcut icon', href='/favicon.ico',type="image/x-icon")
+    link(rel='icon', href='/favicon.ico',type="image/x-icon")
+    link(rel='stylesheet', href='/stylesheets/material.css')
+    link(rel='stylesheet', href='/stylesheets/material-icons.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    //- link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    block style
+  body
+    .container
+      .toast-message
+      .slider
+        .menu-drawer
+          .drawer-header
+            .drawer-header-left
+              i.drawer-back-icon
+              .drawer-header-separator
+            .drawer-title TXT
+            .drawer-header-right
+              .drawer-header-separator
+              i.drawer-close-icon
+          .drawer-wrapper
+            .main-content
+              if user
+                .drawer-row 
+                  .drawer-row-left G
+                  .drawer-row-center #{user.name}
+              .drawer-row 
+                .drawer-row-left.icon-dashboard
+                .drawer-row-center DASHBOARD
+              //- .drawer-row GAMES
+              a.drawer-row(href='#{site_url}/games')
+                .drawer-row-left.icon-games
+                .drawer-row-center GAMES
+              if user
+                .drawer-row
+                  .drawer-row-left.icon-notification
+                  .drawer-row-center NOTIFICATIONS
+                .drawer-row
+                  .drawer-row-left.icon-friend
+                  .drawer-row-center FRIENDS
+                .drawer-row
+                  .drawer-row-left.icon-follower
+                  .drawer-row-center FOLLOWERS
+                .stretcher
+                a.drawer-row(href='#{site_url}/user/#{user.username}/edit')
+                  .drawer-row-left.icon-profile
+                  .drawer-row-center EDIT PROFILE
+                .drawer-row
+                  .drawer-row-left.icon-setting
+                  .drawer-row-center SETTINGS
+                .drawer-row
+                  .drawer-row-left.icon-feedback
+                  .drawer-row-center SEND FEEDBACK
+                a.drawer-row(href='#{site_url}/logout')
+                  .drawer-row-left.icon-signout
+                  .drawer-row-center SIGN OUT
+              else
+                .spacer
+                .drawer-row
+                  .drawer-row-left.icon-facebook
+                  .drawer-row-center SIGN IN WITH FACEBOOK
+                .drawer-row
+                  .drawer-row-left.icon-google
+                  .drawer-row-center SIGN IN WITH GOOGLE+
+                .drawer-row
+                  .drawer-row-left.icon-twitter
+                  .drawer-row-center SIGN IN WITH TWITTER
+                .spacer
+                a.drawer-row(href='#{site_url}/login')
+                  .drawer-row-left.icon-signin
+                  .drawer-row-center SIGN IN WITH USERNAME
+                a.drawer-row(href='#{site_url}/register')
+                  .drawer-row-left.icon-signup
+                  .drawer-row-center CREATE NEW ACCOUNT
+              
+        //- .overlay-present if gamepost
+        .overlayBar
+          //- if gamepost remove .hide 
+          .overlay-bar.hide
+            .overlay-bar-scroller
+              if game
+                i.overlay-bar-icon.icon-eject
+                i.overlay-bar-icon.icon-menu
+              i.overlay-bar-icon.icon-feed
+              i.overlay-bar-icon.icon-following
+              i.overlay-bar-icon.icon-leaderboard
+              i.overlay-bar-icon.icon-badge
+              i.overlay-bar-icon.icon-store
+              .stretcher
+              i.overlay-bar-icon.icon-bookmark
+              i.overlay-bar-icon.icon-info
+              i.overlay-bar-icon.icon-fullscreen
+        .nav-bar-gradient(class=typeof user === "undefined" ? "" : "is-login")
+        //-  if gamepost add class .overlay-present
+        .nav-bar(class=typeof user === "undefined" ? "" : "is-login")
+          a.nav-home-icon(href='#{site_url}')
+            i.nav-logo-home.mdl-color-text--blue-grey-400.material-icons(role='presentation') home
+          .nav-menu-icon
+          if user
+            .vertical-separator
+            a.link.nav-profile(href='#{site_url}/user/#{user.username}') #{user.name}
+            .vertical-separator
+            a.link.nav-games(href='#{site_url}/games') GAMES
+            .vertical-separator
+            .link.nav-friends FRIEND
+          else
+            .nav-spacer
+            a.link.nav-signing(href='#{site_url}/login') SIGN IN
+            .link.nav-social-icon-wrapper
+              i.nav-social-icon.button-facebook
+              i.nav-social-icon.button-google
+              i.nav-social-icon.button-twitter
+            a.link.nav-signup(href='#{site_url}/register') SIGN UP
+        .pages.landing
+          .index
+            block content
+            footer.mdl-mega-footer
+              .mdl-mega-footer__middle-section
+                .mdl-mega-footer__drop-down-section
+                  input.mdl-mega-footer__heading-checkbox(type='checkbox', checked='')
+                  h1.mdl-mega-footer__heading Features
+                  ul.mdl-mega-footer__link-list
+                    li
+                      a(href='#') About
+                    li
+                      a(href='#') Terms
+                    li
+                      a(href='#') Partners
+                    li
+                      a(href='#') Updates
+                .mdl-mega-footer__drop-down-section
+                  input.mdl-mega-footer__heading-checkbox(type='checkbox', checked='')
+                  h1.mdl-mega-footer__heading Details
+                  ul.mdl-mega-footer__link-list
+                    li
+                      a(href='#') Specs
+                    li
+                      a(href='#') Tools
+                    li
+                      a(href='#') Resources
+                .mdl-mega-footer__drop-down-section
+                  input.mdl-mega-footer__heading-checkbox(type='checkbox', checked='')
+                  h1.mdl-mega-footer__heading Technology
+                  ul.mdl-mega-footer__link-list
+                    li
+                      a(href='#') How it works
+                    li
+                      a(href='#') Patterns
+                    li
+                      a(href='#') Usage
+                    li
+                      a(href='#') Products
+                    li
+                      a(href='#') Contracts
+                .mdl-mega-footer__drop-down-section
+                  input.mdl-mega-footer__heading-checkbox(type='checkbox', checked='')
+                  h1.mdl-mega-footer__heading FAQ
+                  ul.mdl-mega-footer__link-list
+                    li
+                      a(href='#') Questions
+                    li
+                      a(href='#') Answers
+                    li
+                      a(href='#') Contact us
+              .mdl-mega-footer__bottom-section
+                .mdl-logo Title
+                ul.mdl-mega-footer__link-list
+                  li
+                    a(href='#') Help
+                  li
+                    a(href='#') Privacy & Terms
+
+        .drawer-closer.hide
+  footer
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/material.min.js')
+    script(src='/javascripts/script.js')
+    block script 

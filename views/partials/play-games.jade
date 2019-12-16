@@ -1,0 +1,21 @@
+extends ../layout
+block style
+  style.
+    iframe{
+      width:100%;
+      min-height:600px;
+      overflow:hidden;
+      margin-top: 50px;
+    }
+block content
+  - var img_cover = game.cover ? 'background: url("'+game.cover+'") left top no-repeat;    background-position: center center;background-size: auto 100%;' : ''
+  .bg-image(style='#{img_cover}')
+    .game-page.mdl-layout__content
+      a(name='top')
+      iframe(src='#{game.url}')
+      
+block script
+  script.
+    $(document).click(function(){
+      $('iframe').focus();
+    })

@@ -1,0 +1,43 @@
+extends ../layout
+block style
+  
+block content
+  .demo-charts.mdl-cell.mdl-cell--12-col.mdl-grid
+    table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+      thead
+        tr
+          th.mdl-data-table__cell--non-numeric Name
+          th.mdl-data-table__cell--non-numeric Title
+          th.mdl-data-table__cell--non-numeric cover
+          th.mdl-data-table__cell--non-numeric picture
+          th.mdl-data-table__cell--non-numeric description
+          th.mdl-data-table__cell--non-numeric url
+          th.mdl-data-table__cell--non-numeric datecreated
+          th.mdl-data-table__cell--non-numeric 
+          th.mdl-data-table__cell--non-numeric 
+      tbody
+        - var readableDate = function(date){
+        -   _d = new Date(date);
+        -   return _d.getHours()+':'+_d.getMinutes()+' '+_d.getDay()+'-'+_d.getMonth()+'-'+_d.getFullYear()
+        - }
+        each game in games
+          tr
+            td.mdl-data-table__cell--non-numeric 
+              a(href='#{site_url}/games/#{game.name}',target='_blank')= game.name
+            td.mdl-data-table__cell--non-numeric= game.title
+            td.mdl-data-table__cell--non-numeric
+              img.cover(src='#{game.cover}',style='width:200px;')
+            td.mdl-data-table__cell--non-numeric
+              img.picture(src='#{game.picture}',style='width:50px;')
+            td.mdl-data-table__cell--non-numeric= game.description
+            td.mdl-data-table__cell--non-numeric= game.url
+            td.mdl-data-table__cell--non-numeric= game.datecreated ? readableDate(game.datecreated) : ''
+            td
+              a(href='#{admin_url}/games/#{game.name}') 
+                i.mdl-color-text--blue-grey-400.material-icons(role='presentation') edit
+            td
+              a(href='#{admin_url}/delete_games/#{game.name}') 
+                i.mdl-color-text--blue-grey-400.material-icons(role='presentation') delete
+    br
+    a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored(href='#{admin_url}/games/add')
+      i.material-icons add

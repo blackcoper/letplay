@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  .login-page.mdl-layout__content
+    a(name='top')
+    .left-panel
+      .logo-font.android-slogan  Sign in
+      .logo-font.android-sub-slogan To an existing account
+      form(action='/user/login',method='post')
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          input#emailorusername.mdl-textfield__input(type='text',name='emailorusername')
+          label.mdl-textfield__label(for='email') username or email
+        br
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          input#password.mdl-textfield__input(type='password',name='password')
+          label.mdl-textfield__label(for='password') password
+        br
+        a(href="/forgot") forgot your password?
+        .btn-submit-left
+          input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type='submit',value="submit")
+    .right-panel
+        .logo-font.android-slogan  Create
+        .logo-font.android-sub-slogan  It's free to join and easy to use.
+        
+        .btn-submit-left(style='margin-top: 223px;')
+          button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(onclick='window.location.href="#{site_url}/register"')
+            | Join

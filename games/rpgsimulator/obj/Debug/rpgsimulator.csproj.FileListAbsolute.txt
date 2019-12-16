@@ -1,0 +1,6 @@
+E:\xampp\htdocs\lab\games\rpgsimulator\bin\rpgsimulator.dll.config
+E:\xampp\htdocs\lab\games\rpgsimulator\bin\rpgsimulator.dll
+E:\xampp\htdocs\lab\games\rpgsimulator\bin\rpgsimulator.pdb
+E:\xampp\htdocs\lab\games\rpgsimulator\obj\Debug\rpgsimulator.dll
+E:\xampp\htdocs\lab\games\rpgsimulator\obj\Debug\rpgsimulator.pdb
+E:\xampp\htdocs\lab\games\rpgsimulator\obj\Debug\rpgsimulator.csprojResolveAssemblyReference.cache

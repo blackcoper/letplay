@@ -1,0 +1,19 @@
+{
+	"anchor": 0.5,
+	"animationmap": {
+		"t": "t"
+	},
+	"collidewithworld": true,
+	"group": "obstacleGroup",
+	"methods": [{
+		"method1": "function() { alert('test'); }"
+	}],
+	"physics": true,
+	"scale": {
+		"x": 0.2,
+		"y": 0.2
+	},
+	"speed": 200,
+	"orientation": "right",
+	"typename": "demon"
+}

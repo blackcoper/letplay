@@ -1,0 +1,34 @@
+extends ../layout
+block content  
+  .demo-charts.mdl-cell.mdl-cell--12-col.mdl-grid
+    
+    table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+      thead
+        tr
+          th.mdl-data-table__cell--non-numeric Username
+          th.mdl-data-table__cell--non-numeric Name
+          th.mdl-data-table__cell--non-numeric Email
+          th.mdl-data-table__cell--non-numeric Country
+          th.mdl-data-table__cell--non-numeric Bio
+          th.mdl-data-table__cell--non-numeric DOB
+          th.mdl-data-table__cell--non-numeric datecreated
+          th.mdl-data-table__cell--non-numeric lastConnection
+      tbody
+        - var readableDate = function(date){
+        -   _d = new Date(date);
+        -   return _d.getHours()+':'+_d.getMinutes()+' '+_d.getDay()+'-'+_d.getMonth()+'-'+_d.getFullYear()
+        - }
+        each user in users
+          tr
+            td.mdl-data-table__cell--non-numeric 
+              a(href='#{site_url}/user/#{user.username}',target='_blank')= user.username 
+            td.mdl-data-table__cell--non-numeric= user.name
+            td.mdl-data-table__cell--non-numeric= user.email
+            td.mdl-data-table__cell--non-numeric= user.country
+            td.mdl-data-table__cell--non-numeric= user.bio
+            td.mdl-data-table__cell--non-numeric= user.dob ? readableDate(user.dob) : ''
+            td.mdl-data-table__cell--non-numeric= user.datecreated ? readableDate(user.datecreated) : ''
+            td.mdl-data-table__cell--non-numeric= user.lastConnection ? readableDate(user.lastConnection) : ''
+    br
+    a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored(href='#{site_url}/register',target='_blank')
+      i.material-icons add

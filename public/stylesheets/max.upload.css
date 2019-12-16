@@ -1,0 +1,106 @@
+.wrapper-maxupload{
+  overflow:hidden;
+  position:relative;
+  border-radius: 0px;
+}
+
+.wrapper-maxupload .preview-maxupload{
+  display: none;
+  cursor: move;
+  position: absolute;
+  -ms-touch-action:none;
+  transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+}
+.wrapper-maxupload .webcam-maxupload{
+  display: none;
+}
+.wrapper-maxupload .rotate90.preview-maxupload {
+  transform: rotate(90deg) translateY(-100%);
+  -webkit-transform: rotate(90deg) translateY(-100%);
+  -ms-transform: rotate(90deg) translateY(-100%);
+}
+.wrapper-maxupload .rotate180.preview-maxupload {
+  transform: rotate(180deg) translate(-100%, -100%);
+  -webkit-transform: rotate(180deg) translate(-100%, -100%);
+  -ms-transform: rotate(180deg) translateX(-100%, -100%);
+}
+.wrapper-maxupload .rotate270.preview-maxupload {
+  transform: rotate(270deg) translateX(-100%);
+  -webkit-transform: rotate(270deg) translateX(-100%);
+  -ms-transform: rotate(270deg) translateX(-100%);
+}
+
+.wrapper-maxupload .poster-maxupload{
+  width: 100%;
+  height: 100%;
+}
+.wrapper-maxupload .webcam-tools, .wrapper-maxupload .edit-maxupload{
+  display: none;
+}
+.wrapper-maxupload .edit-maxupload #left-tools , .wrapper-maxupload .webcam-tools #left-tools{
+  position: absolute;
+  z-index: 200;
+  width: auto;
+  top: 0px;
+}
+.wrapper-maxupload .edit-maxupload #left-tools #toggle_scroll{
+  display: none;
+}
+.wrapper-maxupload .edit-maxupload #top-tools, .wrapper-maxupload .webcam-tools #top-tools{
+  position: absolute;
+  z-index: 200;
+  top: 0px;
+  right: 0px;
+}
+.wrapper-maxupload .edit-maxupload #bot-tools{
+  /*display: none;*/
+  position: absolute;
+  z-index: 200;
+  bottom: 0px;
+  background-color: gray;
+  color: white;
+  padding: 2px 5px 0px;
+}
+.wrapper-maxupload .edit-maxupload #bot-tools input{
+  width: 40px;
+}
+.filename-maxupload{
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  position: absolute;
+  cursor: pointer;
+}
+.filename-maxupload input{
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  filter:alpha(opacity: 0);
+  margin: 0px;
+  position: absolute;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+}
+.wrapper-maxupload .max-loading{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  display: none;
+}
+
+.wrapper-maxupload .max-loading img {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+}

@@ -1,0 +1,22 @@
+@font-face {
+    font-family: silom;
+    src: url(../assets/fonts/SilomBol.ttf) format('truetype');
+}
+html {
+    height:100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'silom';
+}
+span {
+    font-style: italic;
+}
+#content {
+    overflow: hidden;
+}
+#content canvas{
+  margin: 0 auto;
+}

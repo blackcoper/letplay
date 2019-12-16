@@ -1,0 +1,208 @@
+extends ../layout
+
+block content
+  .register-page.mdl-layout__content
+    a(name='top')
+    .logo-font.android-slogan JOIN TODAY !
+    .logo-font.android-sub-slogan sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+    form(action='/user/register',method="post")
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#username.mdl-textfield__input(type='text',name='username',pattern="^[a-zA-Z0-9]{3,}$")
+        label.mdl-textfield__label(for='username') username
+        span.mdl-textfield__error(msg="Uses only alphanumeric and at least 3 characters") 
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        button#check-valid.mdl-button.mdl-js-button.mdl-button--primary
+          | check available
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#firstname.mdl-textfield__input(type='text',name='firstname')
+        label.mdl-textfield__label(for='firstname') first name
+        span.mdl-textfield__error(msg="Firstname is required") 
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#lastname.mdl-textfield__input(type='text',name='lastname')
+        label.mdl-textfield__label(for='lastname') last name
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#email.mdl-textfield__input(type='text',name='email',pattern='^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
+        label.mdl-textfield__label(for='email') email
+        span.mdl-textfield__error(msg="Invalid email input")   
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#password.mdl-textfield__input(type='password',name='password',pattern='(?=.*\\d)(?=.*([a-z]|[A-Z])).{6,}') 
+        label.mdl-textfield__label(for='password') choose a password
+        span.mdl-textfield__error(msg="Must contain at least one number and one uppercase or lowercase letter, and at least 6 characters")   
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#reenter-password.mdl-textfield__input(type='password',name='reenter-password')
+        label.mdl-textfield__label(for='reenter-password') re-enter username
+        span.mdl-textfield__error(msg="Passwords do not match")   
+      .terms-and-conditions
+        | Please review the agreement(s) below and agree by selecting the checkbox(es) at the bottom of the page. You must agree with the terms of these agreements to continue.
+        .detail
+          div.
+            Developed features are made available under a Free Software license Discussion
+          div.
+            “We provide the Service on software we have developed, participated in the development in, as well as software that was developed by third parties. All that software is Open Source / Free Software according to the definitions of the Open Source Initiative (OSI) and the Free Software Foundation (FSF). This is essential to protect your freedom to leave: There are no proprietary components that would stop you from setting up your own server for the same purpose, and migrate your data from KolabNow.com to that server.”
+          div.
+            + Only the necessary logs and debug information are kept Discussion
+          div.
+            “We will only keep the minimum of logs and debug information necessary to ensure that we can improve the service and resolve issues that may have occurred. The Service employs a state-of-the art security-centric design of which we make use of to provide the Service.”
+          div.
+            + 4 weeks to review changes and possibility to negotiate Discussion
+          div.
+            “When we change terms or prices, we will notify you by email to your main account in this Service. After receiving that email you have 30 days to respond (a) by informing us that you agree to the new terms or prices, (b) by informing us that you disagree, in which case Kolab Systems AG may on a case to case basis agree to continue providing you with the Service under the previous terms and/or prices, or (c) by giving us notice that you terminate this agreement regardless of the remaining duration you had agreed to under the previous terms. Continuation of use after 30 days will constitute agreement to the new terms.”
+          div.
+            + KolabNow is very strict when providing access to Lawful Interception requests Discussion
+          div.
+            KolabNow is very strict when granting access to a Lawful Interception request. All information relating to these requests is anonymized by the authorities themselves, and they also provide spreadsheets which allow you to control how the request is approved. KolabNow also keeps a running total of the number of requests received, granted, and denied on their Privacy Policy page. The number for all was 0 as of August 1, 2013.
+          div.
+            + No third-parties access to your data without a duly authorized judicial Swiss warrant Discussion
+          div.
+            “This Service is subject to the national laws of Switzerland and we do our best to provide you with the maximum level of privacy in this legislation. That means there will be no access to your data by third parties without a duly authorized warrant issued by a Swiss judge.”
+          div.
+            ⋅ Fines for spammers Discussion
+          div.
+            “Do not abuse this Service to invade the privacy and violate the rights of others. Abuse includes also the sending of unsolicited email (“Spam”) for which you explicitly agree to pay a compensation of 0.01 CHF per incident and recipient by making use of the Service.”
+          div.
+            + MyKolab doesn't sell your personal data Discussion
+          div.
+            MyKolab's only source of revenue is the monthly fee paid by subscribers. This means that they don't sell advertising, which could place unwanted cookies and web beacons, nor do they sell your personal data.
+          div.
+            + No tracking cookies and web analytics opt-out Discussion
+          div.
+            Cookies are only used in so far as they are required for the technical working of the system, and we never use them to track you on third party sites. The site also uses web analytics, but you can opt-out at https://kolabnow.com/privacy
+          div.
+            + Suspension will be fair and proportionate Discussion
+          div.
+            “This Agreement shall remain in force for an indefinite period of time. It can be terminated by either Party with a notice period of one month to the end of any calendar month. If you violate these terms, Kolab Systems AG may seek to rectify the situation, including suspension and/or discontinuation of your account. We will aim to be fair and proportionate”
+          div.
+            ⋅ Jurisdiction and law of Switzerland Discussion
+          div.
+            “These terms are subject and governed by the substantial laws of Switzerland with the exclusion of the Vienna Convention on the International Sale of Goods dated April 11, 1980. Disputes arising under or in connection with this Agreement shall be exclusively subject to the jurisdiction of the courts of Zurich, Switzerland.”
+          div.
+            ⋅ Disclosure Discussion
+          div.
+            ToS;DR and this service are not affiliated. But we disclose our personal relationship. Please read the email for more details, click “Discussion”
+      label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='agree',style='margin: 0 10px;')
+        input#agree.mdl-checkbox__input(type='checkbox')
+        span.mdl-checkbox__label I accept and agree 
+      .btn-submit-right
+        input#submit.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type='submit',disabled='disabled')
+block script
+  script.
+    $.fn.serializeObject = function()
+    {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+          if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                  o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+          } else {
+              o[this.name] = this.value || '';
+          }
+      });
+      return o;
+    };
+    $(document).ready(function(){
+      $('input[name]').each(function(){
+        _span = $(this).siblings('span');
+        if(_span.length>0){
+          $(this).keydown(function(){
+            _span = $(this).siblings('span');
+            $(this).parent().removeClass('is-valid is-invalid');
+            _span.html(_span.attr('msg'))
+          })
+        }
+        //- $('#username').keydown(function(){
+        //-   $(this).parent().removeClass('is-valid is-invalid');
+        //-   $(this).siblings('span').html('Uses only alphanumeric and at least 3 characters')
+        //- })
+      })
+      $('#password').keyup(function(){
+        $('#reenter-password').parent().removeClass('is-invalid is-valid')
+      })
+      $('#reenter-password').keydown(function(e){
+        if($('#password').parent().hasClass('is-invalid')){
+          $('#password').focus();
+          e.preventDefault();
+          return false;
+        }
+      }).keyup(function(){
+        if($(this).val()!=$('#password').val()){
+          $(this).parent().addClass('is-invalid');
+        }else{
+          $(this).parent().removeClass('is-invalid');
+        }
+      })
+      $('#check-valid').click(function(e){
+        e.preventDefault();
+        $.ajax({
+          url:'#{site_url}/user/check',
+          type:'POST',
+          dataType:'json',
+          data:{username:$('#username').val()},
+          success:function(response){
+            if(response.status){
+              $('#username').parent().addClass('is-valid');
+            }else{
+              $('#username').parent().addClass('is-invalid');
+              $('#username').siblings('span').html('Username already used')
+            }
+          }
+        })
+        return false;
+      })
+      $('#agree').on('change',function(){
+        $('#submit').attr('disabled',($(this).prop('checked')?null:'disabled'));
+      })
+      $('#submit').attr('disabled',($(this).prop('checked')?null:'disabled'));
+      
+      $('#submit').click(function(e){
+        var pass = true,
+        elm = null;
+        $('#username,#firstname,#email,#password').each(function(){
+          if($(this).val()==''){
+            if(!elm)elm = this;
+            $(this).parent().addClass('is-invalid')
+            pass = false;
+          }
+        })
+        if(!pass){
+          $(elm).focus();
+          e.preventDefault();
+          return false;
+        }
+        if($('#password').val()!=$('#reenter-password').val()){
+          $('#reenter-password').parent().removeClass('is-valid').addClass('is-invalid')
+          $('#reenter-password').focus();
+          e.preventDefault();
+          return false;
+        }
+        $.ajax({
+          url:'#{site_url}/user/register',
+          type:'POST',
+          dataType:'json',
+          data:$('form :input').serializeObject(),
+          success:function(response){
+            if(response.status){
+              window.location.href = '#{site_url}';
+            }else{
+              if(response.errors){
+                elm = null;
+                $.each(response.errors,function(){
+                  if(!elm)elm = $('input[name='+this.param+']');
+                  $('input[name='+this.param+']').parent().addClass('is-invalid')
+                  $('input[name='+this.param+']').siblings('span').html(this.msg)
+                  //- console.log(this);
+                })
+                elm.focus();
+              }          
+            }
+          }
+        })
+        e.preventDefault();
+        return false;
+      })
+    })

@@ -1,0 +1,22 @@
+{
+  "name": "phaser-template",
+  "version": "0.0.0",
+  "dependencies": {
+    "phaser-official": "*"
+  },
+  "authors": [
+    "Gofar <gofar@maxsolution.co.id>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

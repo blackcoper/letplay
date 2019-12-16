@@ -1,0 +1,19 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "outFile": "../js/rpgsimulator.js",
+    "target": "es2015"
+  },
+  "files": [
+    "rpgsimulator.ts",
+    "phaser.d.ts",
+    "../States/TitleState.ts",
+    "../States/MainState.ts",
+    "../GameObjects/Player.ts"
+  ]
+}

@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Admin - Let's PLAY
+    meta(name='viewport', content='width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1')
+    link(rel='shortcut icon', href='/favicon.ico',type="image/x-icon")
+    link(rel='icon', href='/favicon.ico',type="image/x-icon")
+    link(rel='stylesheet', href='/stylesheets/material.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body
+    .container
+      .toast-message
+      .slider
+        .pages.landing
+          .index
+            .login-page.mdl-layout__content(style="width:422px")
+              a(name='top')
+              .left-panel
+                .logo-font.android-slogan(style='padding-top: 65px;')  
+                //- .logo-font.android-sub-slogan To an existing account
+                form(action='login',method='post')
+                  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                    input#emailorusername.mdl-textfield__input(type='text',name='emailorusername')
+                    label.mdl-textfield__label(for='email') username or email
+                  br
+                  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                    input#password.mdl-textfield__input(type='password',name='password')
+                    label.mdl-textfield__label(for='password') password
+                  br
+                  //- a(href="/forgot") forgot your password?
+                  .btn-submit-left(style='margin: 25px 0px 65px 0px;')
+                    input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type='submit',value="submit")
+  script(src='/javascripts/material.min.js')

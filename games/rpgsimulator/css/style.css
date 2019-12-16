@@ -1,0 +1,55 @@
+﻿@font-face {
+    font-family: kenpixel;
+    src: url(kenpixel.ttf);
+}
+@font-face {
+    font-family: kenpixel_block;
+    src: url(kenpixel_block.ttf);
+}
+@font-face {
+    font-family: kenpixel_future;
+    src: url(kenpixel_future.ttf);
+}
+@font-face {
+    font-family: kenpixel_future_square;
+    src: url(kenpixel_future_square.ttf);
+}
+@font-face {
+    font-family: kenpixel_mini;
+    src: url(kenpixel_mini.ttf);
+}
+@font-face {
+    font-family: kenpixel_mini_square;
+    src: url(kenpixel_mini_square.ttf);
+}
+@font-face {
+    font-family: kenpixel_square;
+    src: url(kenpixel_square.ttf);
+}
+@font-face {
+    font-family: kenvector_future;
+    src: url(kenvector_future.ttf);
+}
+@font-face {
+    font-family: kenvector_future_thin;
+    src: url(kenvector_future_thin.ttf);
+}
+
+html {
+    height:100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'kenpixel', sans-serif;
+}
+span {
+    font-style: italic;
+}
+#content {
+    overflow: hidden;
+}
+#content canvas{
+  margin: 0 auto;
+}

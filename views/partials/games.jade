@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  - var img_cover = game.cover ? 'background: url("'+game.cover+'") left top no-repeat;background-size:100%;' : ''
+  .bg-image(style='#{img_cover}')
+    .game-page.mdl-layout__content
+      a(name='top')
+      .mdl-grid
+        .mdl-cell.mdl-cell--12-col.game-header
+          .game-gradient
+          .game-avatar
+            - var img_avatar = game.picture || '/images/default-avatar.png'
+            img(src='#{img_avatar}')
+          .logo-font.game-username #{game.title}
+          .logo-font.game-realname #{game.name}
+          .logo-font.game-bio #{game.description}
+          .play-now-button
+            a.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(href='/games/#{game.name}/play') PLAY NOW
+        section.last-activity.mdl-cell.mdl-cell--8-col.mdl-cell--6-col-tablet Last News & Activity 
+          
+        section.friends.mdl-cell.mdl-cell--4-col.mdl-cell--2-col-tablet Events
+          .logo-font

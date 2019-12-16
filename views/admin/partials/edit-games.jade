@@ -1,0 +1,222 @@
+extends ../layout
+block style
+  link(rel='stylesheet', href='/stylesheets/max.upload.css')
+  link(rel='stylesheet', href='/stylesheets/classic.css')
+  link(rel='stylesheet', href='/stylesheets/classic.date.css')
+  style.
+    .wrapper-maxupload .edit-maxupload #top-tools #submit{
+      display:none;
+    }
+block content
+  //- .register-page.mdl-layout__content
+  .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid
+    a(name='top')
+    //- .logo-font.android-slogan EDIT GAMES
+    //- .logo-font.android-sub-slogan 
+    - var name = game.name || 'add'
+    form(action='#{admin_url}/games/#{name}',method="post",style='margin: 50px auto;')
+      - var _game = game.name || ''
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#name.mdl-textfield__input(type='text',name='name',pattern="^[a-zA-Z0-9]{3,}$",value='#{_game}')
+        label.mdl-textfield__label(for='name') name
+        span.mdl-textfield__error(msg="Uses only alphanumeric and at least 3 characters") 
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        button#check-valid.mdl-button.mdl-js-button.mdl-button--primary
+          | check available
+      br
+      - var _title = game.title || ''
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input#title.mdl-textfield__input(type='text',name='title',value ='#{_title}')
+        label.mdl-textfield__label(for='title') title
+        span.mdl-textfield__error(msg="Title is required") 
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label(style='width:100%')
+        textarea#description.mdl-textfield__input(type='text',name='description',rows="1")= game.description || ''
+        label.mdl-textfield__label(for='description') description
+        span.mdl-textfield__error(msg="Description is required") 
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-focused(style='width:680px;')
+        .profile-cover
+        - var cov = game.cover ? game.cover : '';
+        input#cover(type='hidden',name='cover',value='')
+        input#cover-x(type='hidden',name='cover-x',value='')
+        input#cover-y(type='hidden',name='cover-y',value='')
+        input#cover-w(type='hidden',name='cover-w',value='')
+        input#cover-h(type='hidden',name='cover-h',value='')
+        input#cover-r(type='hidden',name='cover-r',value='')
+        input#cover-frameW(type='hidden',name='cover-frameW',value='')
+        input#cover-frameH(type='hidden',name='cover-frameH',value='')
+        label.mdl-textfield__label(for='cover') cover
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-focused(style='width:200px;')
+        .profile-avatar
+        - var pic = game.picture ? game.picture: '';
+        input#avatar(type='hidden',name='avatar',value='')
+        input#avatar-x(type='hidden',name='avatar-x',value='')
+        input#avatar-y(type='hidden',name='avatar-y',value='')
+        input#avatar-w(type='hidden',name='avatar-w',value='')
+        input#avatar-h(type='hidden',name='avatar-h',value='')
+        input#avatar-r(type='hidden',name='avatar-r',value='')
+        input#avatar-frameW(type='hidden',name='avatar-frameW',value='')
+        input#avatar-frameH(type='hidden',name='avatar-frameH',value='')
+        label.mdl-textfield__label(for='avatar') picture
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        - var _genre = game.genre || ''
+        input#genre.mdl-textfield__input(type='text',name='genre',value='#{_genre}')
+        label.mdl-textfield__label(for='genre') genre
+      br
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        - var _url = game.url || ''
+        input#url.mdl-textfield__input(type='text',name='url',value='#{_url}')
+        label.mdl-textfield__label(for='url') url
+      br      
+      .btn-submit-right(style='margin:25px 0px 100px 365px;')
+        a#submit.mdl-button.mdl-js-button.mdl-button--raised(href='#{admin_url}/games',style='margin-right: 10px;') cancel
+        - var _val = game ? 'submit' : 'save changes'
+        input#submit.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type='submit',value='#{_val}')
+block script
+  script(src='/javascripts/jquery.ui.widget.js')
+  script(src='/javascripts/jquery.iframe-transport.js')
+  script(src='/javascripts/jquery.fileupload.js')
+  script(src='/javascripts/jquery.boilerplate.min.js')
+  script(src='/javascripts/picker.js')
+  script(src='/javascripts/legacy.js')
+  script(src='/javascripts/picker.date.js')
+  script.
+    var avatar_config = {
+      width : 200,
+      height: 200
+    }
+    var cover_config = {
+      width : 680,
+      height: 270
+    }
+    $(document).ready(function(){
+      $('input[name]').each(function(){
+        _span = $(this).siblings('span');
+        if(_span.length>0){
+          $(this).keydown(function(){
+            _span = $(this).siblings('span');
+            $(this).parent().removeClass('is-valid is-invalid');
+            _span.html(_span.attr('msg'))
+          })
+        }
+      })
+      $('#check-valid').click(function(e){
+        e.preventDefault();
+        $.ajax({
+          url:'#{admin_url}/games/check',
+          type:'POST',
+          dataType:'json',
+          data:{name:$('#name').val()},
+          success:function(response){
+            console.log(response);
+            if(response.status){
+              $('#name').parent().addClass('is-valid');
+            }else{
+              if(response.data == '#{game.name}'){
+                $('#name').parent().addClass('is-valid');
+              }else{
+                $('#name').parent().addClass('is-invalid');
+                $('#name').siblings('span').html('name already used')
+              }
+            }
+          }
+        })
+        return false;
+      })
+      _url_cover = '#{pic}' || '/images/upload-foto.png';
+      $( ".profile-avatar" ).maxupload({
+        tagname: 'image-avatar',
+        //- basepath:'#{site_url}',
+        basepath:'#{admin_url}/../',
+        url:'#{admin_url}/games/#{name}', //for upload temp if not support filereader html5
+        //- debug:true,
+        width : avatar_config.width,
+        height : avatar_config.height,
+        alwaysUpload:true,
+        autoStartWebcam:false,
+        acceptFile: '.jpg,.png',
+        acceptFileTypes : /(\.|\/)(jpe?g|png)$/i,
+        photo:_url_cover, //'/images/upload-foto.png'
+        loading:'/images/loading.gif',
+        onready:function(data){
+          var ctx=data
+          var updateValue = function(){
+            var _transform = ctx.getData().position
+            $('#avatar-x').val(_transform.x)
+            $('#avatar-y').val(_transform.y)
+            $('#avatar-w').val(_transform.w)
+            $('#avatar-h').val(_transform.h)
+            $('#avatar-r').val(ctx.rotate)
+            $('#avatar-frameW').val(_transform.frame.w)
+            $('#avatar-frameH').val(_transform.frame.h)
+          }
+          $(data.preview).on({
+            'touchmove':updateValue,
+            'mousemove':updateValue
+          })
+        },
+        onupdate:function(data){
+          if($(".profile-avatar #preview").attr('src'))$('#avatar').val($(".profile-avatar #preview").attr('src'))
+          var _transform = data.getData().position
+          $('#avatar-x').val(_transform.x)
+          $('#avatar-y').val(_transform.y)
+          $('#avatar-w').val(_transform.w)
+          $('#avatar-h').val(_transform.h)
+          $('#avatar-r').val(data.rotate)
+          $('#avatar-frameW').val(_transform.frame.w)
+          $('#avatar-frameH').val(_transform.frame.h)
+        },
+        ondelete:function(){
+          $('#avatar').val('')  
+        }
+      });
+      _url_cover0 = '#{cov}' || '/images/upload-foto.png';
+      $( ".profile-cover" ).maxupload({
+        tagname: 'image-cover',
+          basepath:'#{admin_url}/../',
+        url:'#{admin_url}/games/#{name}', //for upload temp if not support filereader html5
+        //- debug:true,
+        width : cover_config.width,
+        height : cover_config.height,
+        alwaysUpload:true,
+        autoStartWebcam:false,
+        acceptFile: '.jpg,.png',
+        acceptFileTypes : /(\.|\/)(jpe?g|png)$/i,
+        photo:_url_cover0, //'/images/upload-foto.png'
+        loading:'/images/loading.gif',
+        onready:function(data){
+          var ctx=data
+          var updateValue = function(){
+            var _transform = ctx.getData().position
+            $('#cover-x').val(_transform.x)
+            $('#cover-y').val(_transform.y)
+            $('#cover-w').val(_transform.w)
+            $('#cover-h').val(_transform.h)
+            $('#cover-r').val(ctx.rotate)
+            $('#cover-frameW').val(_transform.frame.w)
+            $('#cover-frameH').val(_transform.frame.h)
+          }
+          $(data.preview).on({
+            'touchmove':updateValue,
+            'mousemove':updateValue
+          })
+        },
+        onupdate:function(data){
+          if($(".profile-cover #preview").attr('src'))$('#cover').val($(".profile-cover #preview").attr('src'))
+          var _transform = data.getData().position
+          $('#cover-x').val(_transform.x)
+          $('#cover-y').val(_transform.y)
+          $('#cover-w').val(_transform.w)
+          $('#cover-h').val(_transform.h)
+          $('#cover-r').val(data.rotate)
+          $('#cover-frameW').val(_transform.frame.w)
+          $('#cover-frameH').val(_transform.frame.h)
+        },
+        ondelete:function(){
+          $('#cover').val('')  
+        }
+      });
+    });
